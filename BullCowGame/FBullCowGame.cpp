@@ -10,7 +10,7 @@ void FBullCowGame::Reset()
 {
 	constexpr int32 MAX_TRIES = 8;
 	MyMaxTries = MAX_TRIES;
-	const Fstring Hiden_Word = "planet";
+	const Fstring Hiden_Word = "german";
 	MyHiddenWord = Hiden_Word;
 	MyCurrentTry = 1;
 	bGameIsWon = false;
