@@ -1,7 +1,7 @@
 #pragma once
 #include<string>
 
-using Fstring = std::string;
+using FString = std::string;
 using int32 = int;
 //all values initialised to zero
 struct FBullCowCount
@@ -29,15 +29,16 @@ public:
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength() const;
 	bool IsGameWON() const;
-	EGuessStatus CheckGuessValidity(Fstring) const;
+	EGuessStatus CheckGuessValidity(FString) const;
 	
-	FBullCowCount SubmitGuess(Fstring);
+	FBullCowCount SubmitGuess(FString);
 
 private:
 
 	//see constructor for initialisation
 	int32 MyCurrentTry;
 	int32 MyMaxTries;
-	Fstring  MyHiddenWord;
+	FString  MyHiddenWord;
 	bool bGameIsWon;
+	bool IsIsogram(FString) const;
 };

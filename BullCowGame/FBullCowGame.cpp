@@ -1,4 +1,6 @@
 #include "FBullCowGame.h"
+#include<map>
+#define TMap std::map
 using int32 = int;
 
 FBullCowGame::FBullCowGame()  // constructor
@@ -10,7 +12,7 @@ void FBullCowGame::Reset()
 {
 	constexpr int32 MAX_TRIES = 8;
 	MyMaxTries = MAX_TRIES;
-	const Fstring Hiden_Word = "german";
+	const FString Hiden_Word = "german";
 	MyHiddenWord = Hiden_Word;
 	MyCurrentTry = 1;
 	bGameIsWon = false;
@@ -25,9 +27,9 @@ int32 FBullCowGame::GetHiddenWordLength() const{return MyHiddenWord.length();}
 
 bool FBullCowGame::IsGameWON() const{return bGameIsWon;}
 
-EGuessStatus FBullCowGame::CheckGuessValidity(Fstring Guess) const
+EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 {
-	if (false)
+	if (!IsIsogram(Guess))
 	{
 		return EGuessStatus::Not_Isogram;
 	}
@@ -45,7 +47,7 @@ EGuessStatus FBullCowGame::CheckGuessValidity(Fstring Guess) const
 	}
 }
 
-FBullCowCount FBullCowGame::SubmitGuess(Fstring Guess)
+FBullCowCount FBullCowGame::SubmitGuess(FString Guess)
 {
 	MyCurrentTry++;
 	FBullCowCount BullCowCount;
@@ -79,4 +81,26 @@ FBullCowCount FBullCowGame::SubmitGuess(Fstring Guess)
 		bGameIsWon = false;
 	}
 	return BullCowCount;
+}
+
+bool FBullCowGame::IsIsogram(FString Word) const
+{
+	if (Word.length() <= 1) { return true; }
+	TMap<char, bool> LetterSeen;
+	for (auto Letter : Word)
+	{
+		Letter = tolower(Letter);
+		if (LetterSeen[Letter])
+		{
+			return false;
+
+		}
+		else
+		{
+			LetterSeen[Letter] = true;
+		}
+
+	}
+
+	return true;
 }
