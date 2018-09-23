@@ -41,4 +41,6 @@ private:
 	FString  MyHiddenWord;
 	bool bGameIsWon;
 	bool IsIsogram(FString) const;
+	bool IsLowercase(FString) const; //no need to give a specific name in the prototype.
+									// In cpp we gave it a variable name called "Word" 
 };
