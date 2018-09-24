@@ -10,7 +10,7 @@ FBullCowGame::FBullCowGame()  // constructor
 
 void FBullCowGame::Reset()
 {
-	constexpr int32 MAX_TRIES = 8;
+	constexpr int32 MAX_TRIES = 3;
 	MyMaxTries = MAX_TRIES;
 	const FString Hiden_Word = "german";
 	MyHiddenWord = Hiden_Word;
